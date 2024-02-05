@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SignInPage = styled.main`
+export const SignUpPage = styled.main`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -11,7 +11,7 @@ export const SignInPage = styled.main`
     gap: 4rem;
 `;
 
-export const FormLogin = styled.form`
+export const FormSignUp = styled.form`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -42,10 +42,6 @@ export const Input = styled.input`
     }
     `;
 
-export const LinkText = styled.a`
-    text-decoration: none;
-`;
-
 export const ContainerError = styled.div`
     display: flex;
     flex-flow: row nowrap;
@@ -54,7 +50,10 @@ export const ContainerError = styled.div`
 
 export const SpanMsg = styled.span`
     color: #f4b860;
-    font-size: .8rem;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 `;
 
 export const AlertIcon = styled.img`
@@ -63,61 +62,18 @@ export const AlertIcon = styled.img`
     background-color: #f4b860;
 `;
 
-export const RedefineMsg = styled.span`
-    color: #a3d9ff;
-    font-size: .8rem;
-`;
-
-export const Or = styled.span`
-    color: #a3d9ff;
-    font-size: 1rem;
-    margin: auto;
-    margin-block: 1rem;
-`;
-
-export const GmailBtn = styled.button`
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    color: #272727;
-    background-color: #a3d9ff;
-    height: 2.2rem;
-    width: 97%;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    gap: .5rem;
-`;
-
-export const GmailLogo = styled.img`
-    width: 1.5rem;
-    height: 1.5rem;
-`;
-
-export const SignUpMsg = styled.p`
-    color: #a3d9ff;
-    font-size: 1.1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-`;
-
-export const SignInBtn = styled.button`
+export const SignUpBtn = styled.button`
     color: #272727;
     background-color: #f4b860;
     height: 2.2rem;
     width: 50%;
     border: none;
     border-radius: 8px;
+    text-align: center;
     font-size: 1rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     margin: auto;
-    margin-block: 1rem;
+    margin-top: 3rem;
 `;

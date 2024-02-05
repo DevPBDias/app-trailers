@@ -10,11 +10,8 @@ import { AlertIcon, ContainerError, FormLogin, GmailBtn,
   SignInPage, SignUpMsg, SpanMsg } from '../styles/SignInStyles';
 
 const loginUserSchema = z.object({
-  email: z.string()
-    .nonempty('Email em branco')
-    .regex(/\S+@\S+\.\S+/, 'Email inválido!'),
-  password: z.string()
-    .nonempty('Senha em branco'),
+  email: z.string().regex(/\S+@\S+\.\S+/, 'Email inválido!'),
+  password: z.string().min(3, 'Senha curta'),
 });
 
 type LoginData = z.infer<typeof loginUserSchema>;
@@ -54,7 +51,7 @@ function SignIn() {
           <GmailLogo src={ googleIcon } alt="icon of google" />
           <span>Gmail</span>
         </GmailBtn>
-        <Link to="/redefinepwd">
+        <Link to="/sign-up">
           <SignUpMsg>Cadastre-se para acessar</SignUpMsg>
         </Link>
         <SignInBtn type="submit">
