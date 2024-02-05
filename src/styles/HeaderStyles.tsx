@@ -10,7 +10,7 @@ export const HeaderTitleContainer = styled.header`
     justify-items: center;
     align-items: center;
     background-color: #272727;
-    height: 10vh;
+    height: 4.5rem;
 `;
 
 export const GoBackBtn = styled.button`
@@ -28,7 +28,7 @@ export const GoBackIcon = styled.img`
 `;
 
 export const Title = styled.h3`
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #a3d9ff;
     font-family: Roboto;
     font-style: normal;

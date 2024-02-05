@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,6 +20,8 @@ function SignIn() {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
     resolver: zodResolver(loginUserSchema),
   });
+
+  const navigate = useNavigate();
 
   const onSubmit = (data: LoginData) => {
     console.log(data);
@@ -43,7 +45,7 @@ function SignIn() {
             <AlertIcon src={ alertIcon } alt="" />
             <SpanMsg>{errors.password.message}</SpanMsg>
           </ContainerError>)}
-        <Link to="/redefinepwd">
+        <Link to="/redefine">
           <RedefineMsg>Esqueceu a senha?</RedefineMsg>
         </Link>
         <Or>ou</Or>
@@ -54,7 +56,7 @@ function SignIn() {
         <Link to="/sign-up">
           <SignUpMsg>Cadastre-se para acessar</SignUpMsg>
         </Link>
-        <SignInBtn type="submit">
+        <SignInBtn type="submit" onClick={ () => navigate('/home') }>
           Entrar
         </SignInBtn>
       </FormLogin>
