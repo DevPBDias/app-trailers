@@ -40,9 +40,6 @@ export const Title = styled.h3`
 // HEADER HOME
 
 export const HeaderHomeContainer = styled.header`
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
