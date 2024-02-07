@@ -10,6 +10,8 @@ import AddMovie from './pages/AddMovie';
 import Movies from './pages/Movies';
 import Series from './pages/Series';
 import Animes from './pages/Animes';
+import Favorites from './pages/Favorites';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
       <Route path="/movies" element={ <Movies /> } />
       <Route path="/series" element={ <Series /> } />
       <Route path="/animes" element={ <Animes /> } />
+      <Route path="/favorites" element={ <Favorites /> } />
+      <Route path="/search" element={ <Search /> } />
     </Routes>
 
   );
