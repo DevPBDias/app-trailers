@@ -7,6 +7,7 @@ export const Container = styled.section`
     justify-items: center;
     align-items: center;
     padding-bottom: 1rem;
+    background-color: #272727;
 `;
 
 export const Content = styled.div`

@@ -6,7 +6,7 @@ export const Container = styled.section`
     justify-content: center;
     justify-items: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     width: 80%;
 `;
 
@@ -17,6 +17,7 @@ export const Content = styled.div`
     justify-items: center;
     align-items: flex-start;
     width: 100%;
+    gap: .5rem;
 `;
 
 export const TiltePlatform = styled.h3`

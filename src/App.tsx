@@ -7,6 +7,9 @@ import { Home } from './pages/Home';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import AddMovie from './pages/AddMovie';
+import Movies from './pages/Movies';
+import Series from './pages/Series';
+import Animes from './pages/Animes';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
       <Route path="/profile" element={ <Profile /> } />
       <Route path="/edit" element={ <EditProfile /> } />
       <Route path="/addMovie" element={ <AddMovie /> } />
+      <Route path="/movies" element={ <Movies /> } />
+      <Route path="/series" element={ <Series /> } />
+      <Route path="/animes" element={ <Animes /> } />
     </Routes>
 
   );

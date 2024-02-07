@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const HeaderTitleContainer = styled.header`
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
@@ -11,6 +8,7 @@ export const HeaderTitleContainer = styled.header`
     align-items: center;
     background-color: #272727;
     height: 4.5rem;
+    margin-bottom: 1rem;
 `;
 
 export const GoBackBtn = styled.button`

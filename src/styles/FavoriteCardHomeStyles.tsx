@@ -76,5 +76,10 @@ export const TextContainer = styled.div`
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         border: none;
         margin-left: 50%;
+        color: #272727;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; /* 1.2rem */
     }
 `;
