@@ -25,11 +25,11 @@ type IData = {
 export const movieData: IMovieData[] = [
   {
     platform: 'Disney+',
-    movies: [movie1, movie2, movie3, movie4],
+    movies: [movie1, movie2, movie3],
   },
   {
     platform: 'HBO Max',
-    movies: [movie4, movie5, movie6, movie3],
+    movies: [movie4, movie5, movie6],
   },
 ];
 

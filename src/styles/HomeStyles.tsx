@@ -8,6 +8,5 @@ export const HomePageContainer = styled.main`
     align-items: center;
     background-color: #272727;
     gap: 1rem;
-    margin-bottom: 5rem;
-    padding-bottom: 2rem;
+    margin-bottom: 4.5rem;
 `;

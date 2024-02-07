@@ -1,25 +1,28 @@
 import { movieData } from '../data/moviesData';
+import { Container, Content,
+  MoviesContainer, TiltePlatform } from '../styles/PlatformCardMoviesStyles';
 
 function PlatformCardMovies() {
   return (
-    <section>
+    <Container>
       {
             movieData && movieData.map((elem, index) => (
-              <div key={ index }>
-                <h3>{elem.platform}</h3>
-                <div>
+              <Content key={ index }>
+                <TiltePlatform>{elem.platform}</TiltePlatform>
+                <MoviesContainer>
                   {elem.movies.map((movies, indexMovie) => (
-                    <img
-                      key={ indexMovie }
-                      src={ movies }
-                      alt={ `movie img ${indexMovie}` }
-                    />
+                    <div key={ indexMovie }>
+                      <img
+                        src={ movies }
+                        alt={ `movie img ${indexMovie}` }
+                      />
+                    </div>
                   ))}
-                </div>
-              </div>
+                </MoviesContainer>
+              </Content>
             ))
         }
-    </section>
+    </Container>
   );
 }
 

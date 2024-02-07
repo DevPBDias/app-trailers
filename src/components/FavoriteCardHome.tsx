@@ -1,26 +1,29 @@
 import { data } from '../data/moviesData';
+import { Card, Container, ImgContainer,
+  TextContainer,
+  TitleSection } from '../styles/FavoriteCardHomeStyles';
 
 function FavoriteCardHome() {
   return (
-    <section>
-      <h3>Meus favoritos</h3>
+    <Container>
+      <TitleSection>Meus favoritos</TitleSection>
       {
             data && data.map((elem, index) => (
-              <section key={ index }>
-                <div>
+              <Card key={ index }>
+                <ImgContainer>
                   <img src={ elem.image } alt="" />
-                </div>
-                <div>
+                </ImgContainer>
+                <TextContainer>
                   <h4>{elem.name}</h4>
                   <span>{elem.company}</span>
                   <button>
                     Trailer
                   </button>
-                </div>
-              </section>
+                </TextContainer>
+              </Card>
             ))
         }
-    </section>
+    </Container>
   );
 }
 
