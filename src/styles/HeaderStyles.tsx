@@ -80,3 +80,53 @@ export const Links = styled.a`
     line-height: 120%;
     text-decoration: none;
 `;
+
+// HEADER MOVIE
+
+export const HeaderMovieContainer = styled.header`
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    background: rgba(39, 39, 39, 0.80);
+    height: 4.5rem;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+`;
+
+export const GoBack = styled.button`
+    width: 3rem;
+    height: 3rem;
+    background: rgba(39, 39, 39, 0.80);
+    margin-left: 1rem;
+    border: none;
+
+    .goBackBtn {
+        width: 2.5rem;
+        height: 2.5rem;
+        flex-shrink: 0;
+        background: rgba(39, 39, 39, 0.80);
+    }
+`;
+
+export const IconContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+    width: 28%;
+    margin-right: 2rem;
+`;
+
+export const FavIcon = styled.img`
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+`;

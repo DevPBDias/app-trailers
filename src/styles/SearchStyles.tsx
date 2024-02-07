@@ -9,6 +9,7 @@ export const SearchContainer = styled.section`
     background-color: #272727;
     padding-bottom: 5rem;
     min-height: 100vh;
+    gap: .5rem;
 
     div {
         display: flex;
@@ -27,7 +28,7 @@ export const SearchContainer = styled.section`
 
 export const SearchInput = styled.input`
     background-color: #a3d9ff;
-    width: 16.5rem;
+    width: 80%;
     height: 2.5rem;
     border: none;
     border-radius: 8px;

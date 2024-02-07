@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const RedefinePage = styled.main`
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
     align-items: center;
     background-color: #272727;
-    height: 100vh;
     gap: 4rem;
+    min-height: 100vh;
 `;
 
 export const FormRedefine = styled.form`
@@ -20,6 +20,7 @@ export const FormRedefine = styled.form`
     background-color: #272727;
     width: 80%;
     gap: .5rem;
+    margin-bottom: 60%;
 `;
 
 export const Input = styled.input`

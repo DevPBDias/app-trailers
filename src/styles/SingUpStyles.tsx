@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const SignUpPage = styled.main`
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
     align-items: center;
     background-color: #272727;
-    height: 100vh;
+    min-height: 100vh;
     gap: 4rem;
 `;
 
@@ -19,6 +19,7 @@ export const FormSignUp = styled.form`
     justify-items: center;
     background-color: #272727;
     width: 80%;
+    margin-bottom: 60%;
     gap: .5rem;
 `;
 

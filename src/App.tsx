@@ -12,6 +12,7 @@ import Series from './pages/Series';
 import Animes from './pages/Animes';
 import Favorites from './pages/Favorites';
 import Search from './pages/Search';
+import MovieId from './pages/MovieId';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="/animes" element={ <Animes /> } />
       <Route path="/favorites" element={ <Favorites /> } />
       <Route path="/search" element={ <Search /> } />
+      <Route path="/movieid" element={ <MovieId /> } />
     </Routes>
 
   );

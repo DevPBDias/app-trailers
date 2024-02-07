@@ -3,11 +3,21 @@ import styled from 'styled-components';
 export const ProfilePage = styled.main`
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
     align-items: center;
     background-color: #272727;
-    height: 100vh;
+    min-height: 100vh;
+`;
+
+export const FormContent = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    margin-bottom: 30%;
 `;
 
 export const ImgContainer = styled.div`

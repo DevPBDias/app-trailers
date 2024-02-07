@@ -7,7 +7,7 @@ export const ProfilePage = styled.main`
     justify-items: center;
     align-items: center;
     background-color: #272727;
-    height: 100vh;
+    padding-bottom: 5rem;
 `;
 
 export const UserContainer = styled.section`
@@ -17,6 +17,8 @@ export const UserContainer = styled.section`
     align-items: center;
     justify-items: center;
     width: 80%;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
 `;
 
 export const ImgContainer = styled.div`
@@ -33,7 +35,7 @@ export const TextContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     justify-items: center;
-    width: 60%;
+    width: 65%;
     gap: .5rem;
 `;
 
