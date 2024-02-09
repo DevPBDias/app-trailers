@@ -7,7 +7,6 @@ export const AddPageContainer = styled.main`
     justify-items: center;
     align-items: center;
     background-color: #272727;
-    gap: 4rem;
     min-height: 100vh;
 `;
 
@@ -19,13 +18,13 @@ export const FormMovie = styled.form`
     justify-items: center;
     background-color: #272727;
     width: 80%;
-    gap: .5rem;
-    margin-bottom: 50%;
+    gap: .2rem;
+    margin-bottom: 1rem;
 `;
 
 export const Input = styled.input`
     background-color: #a3d9ff;
-    height: 2.2rem;
+    height: 2rem;
     width: 95%;
     border: none;
     border-radius: 8px;

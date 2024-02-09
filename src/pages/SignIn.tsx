@@ -8,6 +8,8 @@ import alertIcon from '../assets/alertIcon.png';
 import { AlertIcon, ContainerError, FormLogin, GmailBtn,
   GmailLogo, Input, Or, RedefineMsg, SignInBtn,
   SignInPage, SignUpMsg, SpanMsg } from '../styles/SignInStyles';
+import { loginUser } from '../services/userService';
+import { setCookie } from 'typescript-cookie';
 
 const loginUserSchema = z.object({
   email: z.string().regex(/\S+@\S+\.\S+/, 'Email inválido!'),
@@ -23,8 +25,14 @@ function SignIn() {
 
   const navigate = useNavigate();
 
-  const onSubmit = (data: LoginData) => {
-    console.log(data);
+  const onSubmit = async (data: LoginData) => {
+    try {
+      const response = await loginUser(data);
+      setCookie('token', response.data, { expires: 7 })
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -56,7 +64,7 @@ function SignIn() {
         <Link to="/sign-up">
           <SignUpMsg>Cadastre-se para acessar</SignUpMsg>
         </Link>
-        <SignInBtn type="submit" onClick={ () => navigate('/home') }>
+        <SignInBtn type="submit">
           Entrar
         </SignInBtn>
       </FormLogin>
