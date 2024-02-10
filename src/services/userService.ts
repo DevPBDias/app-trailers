@@ -4,12 +4,9 @@ import { getCookie } from 'typescript-cookie'
 const baseURL = 'http://localhost:3004';
 
 type IUserData = {
-  name: string,
-  userName: string,
   email: string,
   password: string,
-  actors: string,
-  avatar: string,
+  confirmPassword?: string,
 };
 
 type ILoginData = {
@@ -17,8 +14,25 @@ type ILoginData = {
     password: string,
 }
 
+function generateName() {
+  const randomNumber = Math.floor(Math.random() * 1000);
+  return `user-${randomNumber}`;
+}
+
 export function loginUser(data: ILoginData) {
   const response = axios.post(`${baseURL}/login`, data);
+  return response;
+}
+
+export function createUser(data: IUserData) {
+  delete data.confirmPassword;
+  const body = {
+    ...data,
+    name: generateName(),
+    userName: generateName(),
+    avatar: "https://i.imgur.com/xmI2QAo.jpg",
+  };
+  const response = axios.post(`${baseURL}/user`, body);
   return response;
 }
 

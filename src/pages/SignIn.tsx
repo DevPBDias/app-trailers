@@ -3,10 +3,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import logoLogin from '../assets/logoLogin.png';
-import googleIcon from '../assets/googleIcon.png';
 import alertIcon from '../assets/alertIcon.png';
-import { AlertIcon, ContainerError, FormLogin, GmailBtn,
-  GmailLogo, Input, Or, RedefineMsg, SignInBtn,
+import { AlertIcon, ContainerError, FormLogin, Input, RedefineMsg, SignInBtn,
   SignInPage, SignUpMsg, SpanMsg } from '../styles/SignInStyles';
 import { loginUser } from '../services/userService';
 import { setCookie } from 'typescript-cookie';
@@ -28,7 +26,7 @@ function SignIn() {
   const onSubmit = async (data: LoginData) => {
     try {
       const response = await loginUser(data);
-      setCookie('token', response.data, { expires: 7 })
+      setCookie('token', response.data.token, { expires: 7 })
       navigate("/home");
     } catch (error) {
       console.log(error);
@@ -56,17 +54,12 @@ function SignIn() {
         <Link to="/redefine">
           <RedefineMsg>Esqueceu a senha?</RedefineMsg>
         </Link>
-        <Or>ou</Or>
-        <GmailBtn type="button">
-          <GmailLogo src={ googleIcon } alt="icon of google" />
-          <span>Gmail</span>
-        </GmailBtn>
-        <Link to="/sign-up">
-          <SignUpMsg>Cadastre-se para acessar</SignUpMsg>
-        </Link>
         <SignInBtn type="submit">
           Entrar
         </SignInBtn>
+        <Link to="/sign-up">
+          <SignUpMsg>Cadastre-se para acessar</SignUpMsg>
+        </Link>
       </FormLogin>
     </SignInPage>
   );

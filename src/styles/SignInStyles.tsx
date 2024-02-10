@@ -66,37 +66,7 @@ export const AlertIcon = styled.img`
 export const RedefineMsg = styled.span`
     color: #a3d9ff;
     font-size: .8rem;
-`;
-
-export const Or = styled.span`
-    color: #a3d9ff;
-    font-size: 1rem;
-    margin: auto;
-    margin-block: 1rem;
-`;
-
-export const GmailBtn = styled.button`
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    color: #272727;
-    background-color: #a3d9ff;
-    height: 2.2rem;
-    width: 97%;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    gap: .5rem;
-`;
-
-export const GmailLogo = styled.img`
-    width: 1.5rem;
-    height: 1.5rem;
+    text-decoration: underline;
 `;
 
 export const SignUpMsg = styled.p`
@@ -105,6 +75,7 @@ export const SignUpMsg = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-decoration: underline;
 `;
 
 export const SignInBtn = styled.button`
@@ -119,5 +90,6 @@ export const SignInBtn = styled.button`
     font-weight: 700;
     line-height: normal;
     margin: auto;
-    margin-block: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
 `;

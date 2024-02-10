@@ -5,14 +5,16 @@ import HeaderTitle from '../components/HeaderTitle';
 import alertIcon from '../assets/alertIcon.png';
 import { AlertIcon, ContainerError, FormSignUp,
   Input, SignUpBtn, SignUpPage, SpanMsg } from '../styles/SingUpStyles';
+import { createUser } from '../services/userService';
+import { useNavigate } from 'react-router-dom';
 
 const signUserSchema = z.object({
   email: z.string().regex(/\S+@\S+\.\S+/, 'Email inválido!'),
   password: z.string().min(3, 'Senha curta'),
-  confirm_password: z.string()
+  confirmPassword: z.string()
     .min(3, 'Senha curta'),
 })
-  .refine(({ password, confirm_password }) => password === confirm_password, {
+  .refine(({ password, confirmPassword }) => password === confirmPassword, {
     message: 'Senhas diferentes',
     path: ['confirm_password'],
   });
@@ -24,8 +26,15 @@ function SignUp() {
     resolver: zodResolver(signUserSchema),
   });
 
-  const onSubmit = (data: LoginData) => {
-    console.log(data);
+  const navigate = useNavigate();
+
+  const onSubmit = async (data: LoginData) => {
+    try {
+      await createUser(data);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -48,14 +57,14 @@ function SignUp() {
           </ContainerError>)}
         <Input
           placeholder="Confirmar senha"
-          type="confirm_password"
-          { ...register('confirm_password') }
+          type="password"
+          { ...register('confirmPassword') }
         />
-        {errors.confirm_password
+        {errors.confirmPassword
         && (
           <ContainerError>
             <AlertIcon src={ alertIcon } alt="" />
-            <SpanMsg>{errors.confirm_password.message}</SpanMsg>
+            <SpanMsg>{errors.confirmPassword.message}</SpanMsg>
           </ContainerError>)}
         <SignUpBtn type="submit">
           Cadastrar
