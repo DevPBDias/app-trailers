@@ -1,14 +1,18 @@
-import { data } from '../data/moviesData';
+import { useContext } from 'react';
+import { MovieContext } from '../context/MoviesContext';
 import { Card, Container, ImgContainer,
   TextContainer,
   TitleSection } from '../styles/FavoriteCardHomeStyles';
+import { IMovieData } from '../types';
 
 function FavoriteCardHome() {
+  const { movies } = useContext(MovieContext);
+
   return (
     <Container>
       <TitleSection>Meus favoritos</TitleSection>
       {
-            data && data.map((elem, index) => (
+            movies && movies.map((elem: IMovieData, index: number) => (
               <Card key={ index }>
                 <ImgContainer>
                   <img src={ elem.image } alt="" />

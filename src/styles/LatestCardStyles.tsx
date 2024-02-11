@@ -33,4 +33,11 @@ export const ImgContainer = styled.div`
     justify-items: center;
     align-items: flex-start;
 
+    img {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 8px;
+        margin-block: .5rem;
+    }
+
 `;

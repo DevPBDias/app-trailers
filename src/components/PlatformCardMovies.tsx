@@ -1,27 +1,17 @@
-import { movieData } from '../data/moviesData';
-import { Container, Content,
-  MoviesContainer, TiltePlatform } from '../styles/PlatformCardMoviesStyles';
+import { useContext } from 'react';
+import { Container } from '../styles/PlatformCardMoviesStyles';
+import PlatformCard from './PlatformCard';
+import { MovieContext } from '../context/MoviesContext';
 
 function PlatformCardMovies() {
+  const { hbo, disney, netflix, crunchy } = useContext(MovieContext)
+
   return (
     <Container>
-      {
-            movieData && movieData.map((elem, index) => (
-              <Content key={ index }>
-                <TiltePlatform>{elem.platform}</TiltePlatform>
-                <MoviesContainer>
-                  {elem.movies.map((movies, indexMovie) => (
-                    <div key={ indexMovie }>
-                      <img
-                        src={ movies }
-                        alt={ `movie img ${indexMovie}` }
-                      />
-                    </div>
-                  ))}
-                </MoviesContainer>
-              </Content>
-            ))
-        }
+      <PlatformCard data={disney} name='Disney+' />
+      <PlatformCard data={hbo} name='HBO Max' />
+      <PlatformCard data={netflix} name='Netflix' />
+      <PlatformCard data={crunchy} name='Crunchyroll' />
     </Container>
   );
 }

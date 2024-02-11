@@ -1,26 +1,24 @@
-import { data } from '../data/moviesData';
 import { CardContainer, Content, ImgContainer,
   TextContainer } from '../styles/MovieIdStyles';
-import movieIdImg from '../assets/movieIdImg.png';
 
-function MovieIdCard() {
+function MovieIdCard({ data }: any) {
   return (
     <CardContainer>
       {
             data && (
               <Content>
                 <ImgContainer>
-                  <img src={ movieIdImg } alt="movie img" />
+                  <img src={ data.image } alt="movie img" />
                 </ImgContainer>
                 <TextContainer>
-                  <h4>{ data[0].name }</h4>
-                  <p>{ data[0].type }</p>
+                  <h4>{ data.name }</h4>
+                  <p>{ data.category }</p>
                   <div className="info">
-                    <span>{ data[0].year }</span>
-                    <span>{ data[0].director }</span>
-                    <span>{ data[0].company }</span>
+                    <span>{ data.year }</span>
+                    <span>{ data.director }</span>
+                    <span>{ data.company }</span>
                   </div>
-                  <span>{ data[0].actors }</span>
+                  <span>{ data.actors }</span>
                 </TextContainer>
               </Content>
 

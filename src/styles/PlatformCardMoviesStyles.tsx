@@ -5,19 +5,9 @@ export const Container = styled.section`
     flex-flow: column nowrap;
     justify-content: center;
     justify-items: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.5rem;
     width: 80%;
-`;
-
-export const Content = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    justify-items: center;
-    align-items: flex-start;
-    width: 100%;
-    gap: .5rem;
 `;
 
 export const TiltePlatform = styled.h3`
@@ -28,18 +18,30 @@ export const TiltePlatform = styled.h3`
     line-height: 120%; /* 24px */
 `;
 
-export const MoviesContainer = styled.div`
+export const PlatContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  justify-items: center;
+  align-items: flex-start;
+
+  .div-plat {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: center;
     justify-items: center;
-    align-items: center;
+    align-items: flex-start;
     overflow: auto;
     white-space: nowrap;
-    width: 100%;
+    gap: .5rem;
+  }
+`
 
+
+export const MoviesContainer = styled.div`
     img {
         width: 5.625rem;
         height: 7.5rem;
+        border-radius: 8px;
     }
 `;

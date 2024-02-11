@@ -29,7 +29,7 @@ function App() {
       <Route path="/animes" element={ <Animes /> } />
       <Route path="/favorites" element={ <Favorites /> } />
       <Route path="/search" element={ <Search /> } />
-      <Route path="/movieid" element={ <MovieId /> } />
+      <Route path="/movie/:id" element={ <MovieId /> } />
     </Routes>
 
   );
