@@ -1,11 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import HeaderTitle from '../components/HeaderTitle';
-import { BtnsContainer, Button, DeleteImg,
-  EditImg, ImgContainer, ProfileBtn, ProfilePage,
+import { ImgContainer, ProfileBtn, ProfilePage,
   TextContainer, TextProfile, UserContainer, UserName } from '../styles/ProfileStyles';
 import profile from '../assets/profile.png';
-import editImg from '../assets/pencil.png';
-import deleteImg from '../assets/trash.png';
 import Footer from '../components/Footer';
 
 function Profile() {
@@ -24,20 +21,12 @@ function Profile() {
           <TextProfile>User Email</TextProfile>
         </TextContainer>
       </UserContainer>
-      <BtnsContainer>
-        <Button
+      <ProfileBtn
           type="button"
           onClick={ () => navigate('/edit') }
         >
-          <EditImg src={ editImg } alt="user edit" />
-        </Button>
-        <Button
-          type="button"
-          onClick={ () => navigate('/') }
-        >
-          <DeleteImg src={ deleteImg } alt="user delete" />
-        </Button>
-      </BtnsContainer>
+        Editar perfil
+      </ProfileBtn>
       <ProfileBtn
         type="button"
         onClick={ () => navigate('/redefine') }

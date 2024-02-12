@@ -36,12 +36,25 @@ export function createUser(data: IUserData) {
   return response;
 }
 
-export function userLogged() {
-    const response = axios.get(`${baseURL}/user/:id`, {
+export function userLogged(id: string) {
+    const response = axios.get(`${baseURL}/user/${id}`, {
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       }
     });
     
     return response;
-  }
+}
+
+export function newPassword(id: string, data: IUserData) {
+  const response = axios.patch(`${baseURL}/user/${id}`, data, {
+    headers: {
+      Authorization: `Bearer ${getCookie("token")}`,
+    }});
+  return response;
+}
+
+export function findUsers() {
+  const response = axios.get(`${baseURL}/user`);
+  return response;
+}

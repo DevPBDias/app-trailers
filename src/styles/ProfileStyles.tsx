@@ -55,37 +55,6 @@ export const TextProfile = styled.p`
     line-height: normal;
 `;
 
-export const Button = styled.button`
-    width: 3.5rem;
-    height: 2.5rem;
-    flex-shrink: 0;
-    background-color: #F4B860;
-    border: none;
-    border-radius: 8px;
-`;
-
-export const EditImg = styled.img`
-    width: 1.75rem;
-    height: 1.33331rem;
-    flex-shrink: 0;
-`;
-
-export const DeleteImg = styled.img`
-    width: 1.5rem;
-    height: 1.6875rem;
-    flex-shrink: 0;
-`;
-
-export const BtnsContainer = styled.section`
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    justify-items: center;
-    width: 50%;
-    margin-block: 1.5rem;
-`;
-
 export const ProfileBtn = styled.button`
     color: #272727;
     background-color: #f4b860;

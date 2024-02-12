@@ -5,8 +5,11 @@ import HeaderTitle from '../components/HeaderTitle';
 import alertIcon from '../assets/alertIcon.png';
 import { AlertIcon, ContainerError, FormRedefine,
   Input, RedefineBtn, RedefinePage, SpanMsg } from '../styles/RedefineStyles';
+import { findUsers, newPassword } from '../services/userService';
+import { useNavigate } from 'react-router-dom';
 
 const pwdUserSchema = z.object({
+  email: z.string().min(3, 'Email em branco').email('Email inválido'),
   password: z.string().min(3, 'Senha curta'),
   confirm_password: z.string()
     .min(3, 'Senha curta'),
@@ -23,14 +26,34 @@ function Redefine() {
     resolver: zodResolver(pwdUserSchema),
   });
 
-  const onSubmit = (data: LoginData) => {
-    console.log(data);
+  const navigate = useNavigate();
+
+  const onSubmit = async (info: LoginData) => {
+    const { data } = await findUsers();
+    const findUser = await data.filter((user: any) => user.email === info.email)
+    
+    const userFormat: any = {
+      name: findUser[0].name,
+      email: findUser[0].email,
+      userName: findUser[0].userName,
+      avatar: findUser[0].avatar,
+      password: info.password,
+    }
+    await newPassword(findUser[0]._id, userFormat)
+    navigate('/')    
   };
 
   return (
     <RedefinePage>
       <HeaderTitle titlePage="Redefinir senha" />
       <FormRedefine onSubmit={ handleSubmit(onSubmit) }>
+      <Input placeholder="Email" type="email" { ...register('email') } />
+        {errors.email
+        && (
+          <ContainerError>
+            <AlertIcon src={ alertIcon } alt="" />
+            <SpanMsg>{errors.email.message}</SpanMsg>
+          </ContainerError>)}
         <Input placeholder="Senha" type="password" { ...register('password') } />
         {errors.password
         && (
@@ -40,7 +63,7 @@ function Redefine() {
           </ContainerError>)}
         <Input
           placeholder="Confirmar senha"
-          type="confirm_password"
+          type="password"
           { ...register('confirm_password') }
         />
         {errors.confirm_password

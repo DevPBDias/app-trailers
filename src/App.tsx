@@ -22,6 +22,7 @@ function App() {
       <Route path="/redefine" element={ <Redefine /> } />
       <Route path="/home" element={ <Home /> } />
       <Route path="/profile" element={ <Profile /> } />
+      
       <Route path="/edit" element={ <EditProfile /> } />
       <Route path="/addMovie" element={ <AddMovie /> } />
       <Route path="/movies" element={ <Movies /> } />
