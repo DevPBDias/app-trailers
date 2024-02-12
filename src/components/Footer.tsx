@@ -5,9 +5,12 @@ import searchIcon from '../assets/searchIcon.png';
 import profileIcon from '../assets/profileIcon.png';
 import { BtnFooter, FavIcon, FooterContainer,
   HomeIcon, ProfileIcon, SearchIcon } from '../styles/FooterStyles';
+import { getCookie } from 'typescript-cookie';
 
 function Footer() {
   const navigate = useNavigate();
+
+  const idUser = getCookie('userId')
 
   return (
     <FooterContainer>
@@ -25,7 +28,7 @@ function Footer() {
       </BtnFooter>
       <BtnFooter
         type="button"
-        onClick={ () => navigate('/profile') }
+        onClick={ () => navigate(`/profile/${idUser}`) }
       >
         <SearchIcon src={ profileIcon } alt="user delete" />
       </BtnFooter>

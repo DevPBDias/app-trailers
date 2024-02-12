@@ -36,7 +36,7 @@ export function createUser(data: IUserData) {
   return response;
 }
 
-export function userLogged(id: string) {
+export function userLogged(id: string | undefined) {
     const response = axios.get(`${baseURL}/user/${id}`, {
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
@@ -47,6 +47,15 @@ export function userLogged(id: string) {
 }
 
 export function newPassword(id: string, data: IUserData) {
+  delete data.confirmPassword;
+  const response = axios.patch(`${baseURL}/user/redefine/${id}`, data, {
+    headers: {
+      Authorization: `Bearer ${getCookie("token")}`,
+    }});
+  return response;
+}
+
+export function editUser(id: string, data: any) {
   const response = axios.patch(`${baseURL}/user/${id}`, data, {
     headers: {
       Authorization: `Bearer ${getCookie("token")}`,

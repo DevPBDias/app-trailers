@@ -7,7 +7,7 @@ export const ProfilePage = styled.main`
     justify-items: center;
     align-items: center;
     background-color: #272727;
-    min-height: 100vh;
+    height: 100vh;
 `;
 
 export const FormContent = styled.div`
@@ -16,15 +16,7 @@ export const FormContent = styled.div`
     justify-content: center;
     align-items: center;
     justify-items: center;
-    width: 100%;
-    margin-bottom: 30%;
-`;
-
-export const ImgContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
+    margin: auto;
     width: 100%;
 `;
 
@@ -40,7 +32,7 @@ export const Button = styled.button`
     font-weight: 700;
     line-height: normal;
     margin: auto;
-    margin-block: 1.5rem;
+    margin-block: 1rem;
 `;
 
 export const EditForm = styled.form`
@@ -51,7 +43,7 @@ export const EditForm = styled.form`
     justify-items: center;
     background-color: #272727;
     width: 70%;
-    gap: .5rem;
+    gap: 1.5rem;
 `;
 
 export const Input = styled.input`
@@ -63,7 +55,7 @@ export const Input = styled.input`
     text-align: left;
     color: #272727;
     padding-left: 0.5rem;
-    margin-block: 1rem;
+    margin-block: .5rem;
     &::placeholder{
         color: #272727;
         font-size: 1rem;

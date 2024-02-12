@@ -27,6 +27,7 @@ function SignIn() {
     try {
       const response = await loginUser(data);
       setCookie('token', response.data.token, { expires: 7 })
+      setCookie('userId', response.data.idUser, { expires: 7 })
       navigate("/home");
     } catch (error) {
       console.log(error);

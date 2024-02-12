@@ -11,12 +11,12 @@ import { useNavigate } from 'react-router-dom';
 const pwdUserSchema = z.object({
   email: z.string().min(3, 'Email em branco').email('Email inválido'),
   password: z.string().min(3, 'Senha curta'),
-  confirm_password: z.string()
+  confirmPassword: z.string()
     .min(3, 'Senha curta'),
 })
-  .refine(({ password, confirm_password }) => password === confirm_password, {
+  .refine(({ password, confirmPassword }) => password === confirmPassword, {
     message: 'Senhas diferentes',
-    path: ['confirm_password'],
+    path: ['confirmPassword'],
   });
 
   type LoginData = z.infer<typeof pwdUserSchema>;
@@ -31,15 +31,7 @@ function Redefine() {
   const onSubmit = async (info: LoginData) => {
     const { data } = await findUsers();
     const findUser = await data.filter((user: any) => user.email === info.email)
-    
-    const userFormat: any = {
-      name: findUser[0].name,
-      email: findUser[0].email,
-      userName: findUser[0].userName,
-      avatar: findUser[0].avatar,
-      password: info.password,
-    }
-    await newPassword(findUser[0]._id, userFormat)
+    await newPassword(findUser[0]._id, info)
     navigate('/')    
   };
 
@@ -64,13 +56,13 @@ function Redefine() {
         <Input
           placeholder="Confirmar senha"
           type="password"
-          { ...register('confirm_password') }
+          { ...register('confirmPassword') }
         />
-        {errors.confirm_password
+        {errors.confirmPassword
         && (
           <ContainerError>
             <AlertIcon src={ alertIcon } alt="" />
-            <SpanMsg>{errors.confirm_password.message}</SpanMsg>
+            <SpanMsg>{errors.confirmPassword.message}</SpanMsg>
           </ContainerError>)}
         <RedefineBtn type="submit">
           Finalizar

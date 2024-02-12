@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const ProfilePage = styled.main`
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     justify-items: center;
     align-items: center;
     background-color: #272727;
-    padding-bottom: 5rem;
+    min-height: 100vh;
 `;
 
 export const UserContainer = styled.section`
@@ -19,6 +19,7 @@ export const UserContainer = styled.section`
     width: 80%;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    margin-top: 2rem;
 `;
 
 export const ImgContainer = styled.div`
@@ -27,6 +28,13 @@ export const ImgContainer = styled.div`
     align-items: center;
     justify-items: center;
     width: 100%;
+    margin-bottom: 1rem;
+
+    img {
+        width: 65%;
+        height: 12rem;
+        border-radius: 8px;
+    }
 `;
 
 export const TextContainer = styled.div`
