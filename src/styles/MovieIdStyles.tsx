@@ -98,18 +98,41 @@ export const BtnContainer = styled.div`
     align-items: center;
     margin-bottom: 2rem;
 
-    button {
-        width: 7.875rem;
-        height: 2.5rem;
+    a {
+        width: 6rem;
+        height: 1.8rem;
         flex-shrink: 0;
-        background-color: #F4B860;
+        border-radius: 0.5rem;
+        background: #F4B860;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         border: none;
-        border-radius: 8px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: #272727;
-        text-align: center;
         font-size: 1rem;
         font-style: normal;
-        font-weight: 700;
-        line-height: normal;
+        font-weight: 600;
+        line-height: 120%; /* 1.2rem */
+    }
+
+    .plat-btn {
+        width: 6rem;
+        height: 1.8rem;
+        flex-shrink: 0;
+        border-radius: 0.5rem;
+        background: #272727;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        border: 1px solid #F4B860;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #F4B860;
+        font-size: .85rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; /* 1.2rem */
     }
 `;

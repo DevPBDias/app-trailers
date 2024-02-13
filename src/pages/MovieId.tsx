@@ -1,39 +1,48 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import HeaderMovie from '../components/HeaderMovie';
 import MovieIdCard from '../components/MovieIdCard';
-import PlatformCardMovies from '../components/PlatformCardMovies';
 import { BtnContainer, MovieIdContainer } from '../styles/MovieIdStyles';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getMovieById } from '../services/movieService';
+import { MovieContext } from '../context/MoviesContext';
+import RelatedMovies from '../components/RelatedMovies';
 
 function MovieId() {
   const { id } = useParams();
   const [movie, setMovie] = useState<any>({})
+  const [relatedMovies, setRelatedMovies] = useState<any>([])
+  const { movies } = useContext(MovieContext)
 
   async function fetchMovieById(id: any) {
     const { data } = await getMovieById(id)
     setMovie(data);
   }
 
+  async function getRelatedMovies(category: string) {
+    const moviesInCategory = await movies.filter((elem: any) => elem.category === category)
+    setRelatedMovies(moviesInCategory);
+  }
+
   useEffect(() => {
     fetchMovieById(id)
+    getRelatedMovies(movie.category)
   }, [])
-  
+
 
   return (
     <MovieIdContainer>
       <HeaderMovie />
-      <MovieIdCard data={movie}/>
+      <MovieIdCard data={movie} />
       <BtnContainer>
-        <button type="button">
+        <Link to={`${movie.linkTrailer}`}>
           Trailer
-        </button>
-        <button type="button">
-          Trailer
-        </button>
+        </Link>
+        <Link className='plat-btn' to={`${movie.linkTrailer}`}>
+          {movie.platform}
+        </Link>
       </BtnContainer>
-      <PlatformCardMovies />
+      <RelatedMovies data={relatedMovies} />
       <Footer />
     </MovieIdContainer>
   );

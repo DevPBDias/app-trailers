@@ -19,7 +19,7 @@ export const Card = styled.div`
     align-items: flex-start;
     background-color: #749AB5;
     width: 100%;
-    height: 5.625rem;
+    height: 7.5rem;
     flex-shrink: 0;
     border-radius: 8px;
 `;
@@ -34,8 +34,8 @@ export const TitleSection = styled.div`
 
 export const ImgContainer = styled.div`
     img {
-        width: 5.5625rem;
-        height: 5.625rem;
+        width: 6rem;
+        height: 7.5rem;
         flex-shrink: 0;
         border-radius: 8px;
     }
@@ -44,12 +44,12 @@ export const ImgContainer = styled.div`
 export const TextContainer = styled.div`
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
     align-items: flex-start;
-    gap: .3rem;
+    gap: 1rem;
     padding: .5rem;
-    width: calc(100% - 5.5625rem);
+    width: calc(100% - 6rem);
 
     h4 {
         color: #272727;
@@ -67,14 +67,18 @@ export const TextContainer = styled.div`
         line-height: 120%; /* 0.75rem */
     }
 
-    button {
+    a {
         width: 6rem;
-        height: 1.875rem;
+        height: 1.8rem;
         flex-shrink: 0;
         border-radius: 0.5rem;
         background: #F4B860;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         border: none;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-left: 50%;
         color: #272727;
         font-size: 1rem;

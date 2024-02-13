@@ -1,4 +1,3 @@
-import FavoriteCardHome from '../components/FavoriteCardHome';
 import Footer from '../components/Footer';
 import HeaderHome from '../components/HeaderHome';
 import LatestCard from '../components/LatestCard';
@@ -11,7 +10,6 @@ export function Home() {
       <HeaderHome />
       <LatestCard />
       <PlatformCardMovies />
-      <FavoriteCardHome />
       <Footer />
     </HomePageContainer>
   );

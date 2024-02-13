@@ -1,32 +1,36 @@
 import { useContext } from 'react';
 import { MovieContext } from '../context/MoviesContext';
-import { Card, Container, ImgContainer,
+import {
+  Card, Container, ImgContainer,
   TextContainer,
-  TitleSection } from '../styles/FavoriteCardHomeStyles';
-import { IMovieData } from '../types';
+} from '../styles/FavoriteCardHomeStyles';
+import { Link, useNavigate } from 'react-router-dom';
 
 function FavoriteCardHome() {
   const { movies } = useContext(MovieContext);
+  const navigate = useNavigate();
 
   return (
     <Container>
-      <TitleSection>Meus favoritos</TitleSection>
       {
-            movies && movies.map((elem: IMovieData, index: number) => (
-              <Card key={ index }>
-                <ImgContainer>
-                  <img src={ elem.image } alt="" />
-                </ImgContainer>
-                <TextContainer>
-                  <h4>{elem.name}</h4>
-                  <span>{elem.company}</span>
-                  <button>
-                    Trailer
-                  </button>
-                </TextContainer>
-              </Card>
-            ))
-        }
+        movies && movies.map((elem: any, index: number) => (
+          <Card key={index} onClick={ () => navigate(`/movie/${elem._id}`)}>
+            <ImgContainer>
+              <img src={elem.image} alt="" />
+            </ImgContainer>
+            <TextContainer>
+              <div>
+                <h4>{elem.name}</h4>
+                <span>{elem.company}</span>
+              </div>
+              <Link to={`${elem.linkTrailer}`}
+              >
+                Trailer
+              </Link>
+            </TextContainer>
+          </Card>
+        ))
+      }
     </Container>
   );
 }
