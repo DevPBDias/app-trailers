@@ -1,13 +1,9 @@
-import { useContext } from 'react';
 import { ContainerSlide, ImgMovie, Title } from '../styles/LatestCardStyles';
-import { MovieContext } from '../context/MoviesContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
-function LatestCard() {
-  const { newMovies } = useContext(MovieContext);
-
+function LatestCard({ data }: any) {
   return (
     <ContainerSlide>
       <Title>Destaques</Title>
@@ -19,8 +15,8 @@ function LatestCard() {
         navigation
       >
         {
-          newMovies && (
-            newMovies.map((movie: any) => (
+          data && (
+            data.map((movie: any) => (
               <SwiperSlide key={movie.name}>
                 <Link to={`/movie/${movie._id}`}>
                   <ImgMovie

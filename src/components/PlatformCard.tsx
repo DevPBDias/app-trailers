@@ -34,8 +34,7 @@ function PlatformCard({ data, name }: ICardProps) {
               <Slider {...settings}>
                 {
                   data?.map((elem: any, index: number) => (
-
-                      <Link className='link' to={`/movie/${elem._id}`}>
+                      <Link key={index} className='link' to={`/movie/${elem._id}`}>
                         <ImageMovie src={elem.image} alt={`movie img ${index}`} />
                       </Link>
                   ))

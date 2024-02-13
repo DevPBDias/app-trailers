@@ -4,11 +4,14 @@ import { getMoviesData } from "../services/movieService";
 interface IMovieContextType {
   movies: any,
   setMovies: Dispatch<SetStateAction<any>>,
-  hbo: any, 
+  hbo: any,
   disney: any,
   netflix: any,
   crunchy: any,
   newMovies: any
+  moviesType: any,
+  animesType: any,
+  seriesType: any,
 }
 
 interface MoviesProviderProps {
@@ -24,20 +27,29 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
   const [netflix, setNetflix] = useState<any>([])
   const [crunchy, setCrunchy] = useState<any>([])
   const [newMovies, setNewMovies] = useState<any>([])
+  const [moviesType, setMovieType] = useState<any>([])
+  const [animesType, setAnimeType] = useState<any>([])
+  const [seriesType, setSerieType] = useState<any>([])
 
   async function savingData() {
     const { data } = await getMoviesData();
     const getDisney = await data.filter((elem: any) => elem.platform === 'Disney+')
     const getHBO = await data.filter((elem: any) => elem.platform === 'HBO Max')
     const getCrunchy = await data.filter((elem: any) => elem.platform === 'Crunchyroll')
-    const getNetflix= await data.filter((elem: any) => elem.platform === 'Netflix')
+    const getNetflix = await data.filter((elem: any) => elem.platform === 'Netflix')
     const lastestMovies = await data.filter((elem: any) => Number(elem.year) >= 2023)
+    const seriesData = await data.filter((elem: any) => elem.type === 'Série')
+    const animesData = await data.filter((elem: any) => elem.type === 'Anime')
+    const moviesData = await data.filter((elem: any) => elem.type === 'Filme')
     setMovies(data)
     setDisney(getDisney)
     setHBO(getHBO)
     setNetflix(getNetflix)
     setCrunchy(getCrunchy)
     setNewMovies(lastestMovies)
+    setMovieType(moviesData)
+    setAnimeType(animesData)
+    setSerieType(seriesData)
   }
 
   useEffect(() => {
@@ -45,7 +57,11 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
   }, [])
 
   return (
-    <MovieContext.Provider value={{ movies, setMovies, newMovies, hbo, crunchy, netflix, disney }}>
+    <MovieContext.Provider value={{
+      movies, setMovies, moviesType, 
+      animesType, seriesType, newMovies, hbo,
+      crunchy, netflix, disney,
+    }}>
       {children}
     </MovieContext.Provider>
   );

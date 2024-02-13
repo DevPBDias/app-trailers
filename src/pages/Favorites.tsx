@@ -1,7 +1,8 @@
 import { styled } from 'styled-components';
 import HeaderTitle from '../components/HeaderTitle';
-import { data } from '../data/moviesData';
 import Footer from '../components/Footer';
+import { useContext } from 'react';
+import { MovieContext } from '../context/MoviesContext';
 
 const FavContainer = styled.section`
     display: flex;
@@ -29,11 +30,13 @@ const FavContainer = styled.section`
 `;
 
 function Favorites() {
+  const { newMovies } = useContext(MovieContext)
+
   return (
     <FavContainer>
       <HeaderTitle titlePage="Minha lista" />
       <div>
-        { data && data.map((elem, index) => (
+        { newMovies && newMovies.map((elem: any, index: number) => (
           <img
             className="movieImg"
             key={ index }

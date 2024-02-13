@@ -1,25 +1,24 @@
 import { Link } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react';
 import { PlatContainer, TiltePlatform, ImageMovie } from '../styles/PlatformCardMoviesStyles'
-import { MovieContext } from '../context/MoviesContext';
+import { IMovieData } from '../types'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import { useEffect, useState } from 'react';
 
-type RelatedProps = {
-  data: any,
+type ICardProps = {
+  data: IMovieData[],
+  name: string,
 }
 
-function RelatedMovies({ data }: RelatedProps) {
-  const [relatedMovies, setRelatedMovies] = useState<any>([])
-  const { movies } = useContext(MovieContext)
-
+function CategoryCard({ data, name }: ICardProps) {
+    const [ok, setOk] = useState<any>([])
 
   const settings = {
     className: "center",
-    infinite: true,
+    infinite: ok.length < 3 ? false : true,
     centerPadding: "60px",
-    slidesToShow: 3,
+    slidesToShow: ok.length < 3 ? ok.length : 3,
     swipeToSlide: true,
     afterChange: function(index: any) {
       console.log(
@@ -28,29 +27,27 @@ function RelatedMovies({ data }: RelatedProps) {
     }
   };
 
-
-
-  async function getRelatedMovies() {
-    const moviesInCategory = await movies.filter((elem: any) => elem.type === data)
-    setRelatedMovies(moviesInCategory);
+  const selectType = async () => {
+    const okdata = await data.filter((item: any) => item.category === name)
+    setOk(okdata)
   }
 
   useEffect(() => {
-    getRelatedMovies()
-  }, [relatedMovies])
+    selectType();
+  }, [])
 
   return (
     <>
       {
-        relatedMovies  && (
+        data && (
           <PlatContainer>
-            <TiltePlatform>Relacionados</TiltePlatform>
+            <TiltePlatform>{name}</TiltePlatform>
             <div className='div-plat'>
               <Slider {...settings}>
                 {
-                  relatedMovies?.map((elem: any, index: number) => (
+                  ok?.map((elem: any, index: number) => (
                       <Link key={index} className='link' to={`/movie/${elem._id}`}>
-                        <ImageMovie src={elem.image} alt={`movie img ${index}`} />
+                        <ImageMovie src={ elem.image } alt={`movie img ${index}`} />
                       </Link>
                   ))
                 }
@@ -63,4 +60,4 @@ function RelatedMovies({ data }: RelatedProps) {
   )
 }
 
-export default RelatedMovies
+export default CategoryCard

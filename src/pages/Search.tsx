@@ -4,7 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import HeaderTitle from '../components/HeaderTitle';
 import { SearchContainer, SearchInput } from '../styles/SearchStyles';
 import Footer from '../components/Footer';
-import { data } from '../data/moviesData';
+import { useContext } from 'react';
+import { MovieContext } from '../context/MoviesContext';
 
 const searchSchema = z.object({
   name: z.string().min(3, 'Nome curto'),
@@ -17,13 +18,15 @@ function Search() {
     resolver: zodResolver(searchSchema),
   });
 
+  const { movies } = useContext(MovieContext)
+
   return (
     <SearchContainer>
       <HeaderTitle titlePage="Pesquisa" />
       <SearchInput placeholder="Digite o nome..." type="text" { ...register('name') } />
       <div>
         {
-            data && data.map((elem, index) => (
+            movies && movies.map((elem: any, index: number) => (
               <img
                 className="movieImg"
                 key={ index }
