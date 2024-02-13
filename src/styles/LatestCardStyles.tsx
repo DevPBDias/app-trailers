@@ -1,21 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.section`
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    padding-bottom: 1rem;
-    background-color: #272727;
+export const ContainerSlide = styled.section`
+        width: 80%;
 `;
 
-export const Content = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    justify-items: center;
-    align-items: flex-start;
+export const ImgMovie = styled.img`
+        width: 320px;
+        height: 320px;
+        margin-block: 0.5rem;
+        border-radius: 8px;
 `;
 
 export const Title = styled.h3`
@@ -24,20 +17,4 @@ export const Title = styled.h3`
     font-style: normal;
     font-weight: 400;
     line-height: 120%; /* 24px */
-`;
-
-export const ImgContainer = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    justify-items: center;
-    align-items: flex-start;
-
-    img {
-        width: 20rem;
-        height: 20rem;
-        border-radius: 8px;
-        margin-block: .5rem;
-    }
-
 `;

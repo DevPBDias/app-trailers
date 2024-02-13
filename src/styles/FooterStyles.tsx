@@ -7,6 +7,7 @@ export const FooterContainer = styled.footer`
     bottom: 0;
     right: 0;
     display: flex;
+    z-index: 1;
     flex-flow: row nowrap;
     justify-content: space-around;
     justify-items: center;

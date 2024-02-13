@@ -1,30 +1,46 @@
 import { Link } from 'react-router-dom'
-import { PlatContainer, MoviesContainer, TiltePlatform } from '../styles/PlatformCardMoviesStyles'
+import { PlatContainer, TiltePlatform, ImageMovie } from '../styles/PlatformCardMoviesStyles'
 import { IMovieData } from '../types'
-import Loading from './Loading'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
 
 type ICardProps = {
-    data: IMovieData[],
-    name: string,
+  data: IMovieData[],
+  name: string,
 }
 
-function PlatformCard({data, name }: ICardProps) {
+function PlatformCard({ data, name }: ICardProps) {
+  const settings = {
+    className: "center",
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 3,
+    swipeToSlide: true,
+    afterChange: function(index: any) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    }
+  };
+
   return (
     <>
       {
-        data.length === 0 ? <Loading /> : (
+        data && (
           <PlatContainer>
-          <TiltePlatform>{name}</TiltePlatform>
-          <div className='div-plat'>
-          {
-            data && data?.map((elem: any, index: number) => (
-              <MoviesContainer key={index}>
-                <Link to={`/movie/${elem._id}`}>
-                  <img src={ elem.image } alt={ `movie img ${index}` } />
-                </Link>
-              </MoviesContainer>
-              ))
-            }
+            <TiltePlatform>{name}</TiltePlatform>
+            <div className='div-plat'>
+              <Slider {...settings}>
+                {
+                  data?.map((elem: any, index: number) => (
+
+                      <Link className='link' to={`/movie/${elem._id}`}>
+                        <ImageMovie src={elem.image} alt={`movie img ${index}`} />
+                      </Link>
+                  ))
+                }
+                </Slider>
             </div>
           </PlatContainer>
         )

@@ -1,27 +1,38 @@
 import { useContext } from 'react';
-import { Container, Content, ImgContainer, Title } from '../styles/LatestCardStyles';
-import Loading from './Loading';
+import { ContainerSlide, ImgMovie, Title } from '../styles/LatestCardStyles';
 import { MovieContext } from '../context/MoviesContext';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFade } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
 function LatestCard() {
-  const { movies } = useContext(MovieContext);
+  const { newMovies } = useContext(MovieContext);
 
   return (
-    <Container>
-      <Content>
-        <Title>Destaques</Title>
-        <ImgContainer>
+    <ContainerSlide>
+      <Title>Destaques</Title>
+      <Swiper
+        modules={[EffectFade]}
+        effect='fade'
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        navigation
+      >
         {
-          movies.length === 0 ? <Loading /> : (
-            <Link to={`/movie/${movies[0]._id}`}>
-              <img src={ movies[0].image } alt="movie img" />
-            </Link>
+          newMovies && (
+            newMovies.map((movie: any) => (
+              <SwiperSlide key={movie.name}>
+                <Link to={`/movie/${movie._id}`}>
+                  <ImgMovie
+                    src={movie.image}
+                    alt={`${movie.name} image`} />
+                </Link>
+              </SwiperSlide>
+            ))
           )
         }
-        </ImgContainer>
-      </Content>
-    </Container>
+      </Swiper>
+    </ContainerSlide>
   );
 }
 

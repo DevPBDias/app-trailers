@@ -8,6 +8,10 @@ export const Container = styled.section`
     align-items: flex-start;
     gap: 1.5rem;
     width: 80%;
+
+    .link {
+    width: 320px;
+  }
 `;
 
 export const TiltePlatform = styled.h3`
@@ -24,24 +28,21 @@ export const PlatContainer = styled.div`
   justify-content: center;
   justify-items: center;
   align-items: flex-start;
+  width: 320px;
 
   .div-plat {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    justify-items: center;
-    align-items: flex-start;
-    overflow: auto;
-    white-space: nowrap;
-    gap: .5rem;
+    width: 100%;
+  }
+
+  .link {
+    width: 320px;
   }
 `
 
 
-export const MoviesContainer = styled.div`
-    img {
-        width: 5.625rem;
+export const ImageMovie = styled.img`
+        width: 6rem;
         height: 7.5rem;
         border-radius: 8px;
-    }
+        margin-block: 0.5rem;
 `;

@@ -8,6 +8,7 @@ interface IMovieContextType {
   disney: any,
   netflix: any,
   crunchy: any,
+  newMovies: any
 }
 
 interface MoviesProviderProps {
@@ -22,6 +23,7 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
   const [hbo, setHBO] = useState<any>([])
   const [netflix, setNetflix] = useState<any>([])
   const [crunchy, setCrunchy] = useState<any>([])
+  const [newMovies, setNewMovies] = useState<any>([])
 
   async function savingData() {
     const { data } = await getMoviesData();
@@ -29,11 +31,13 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
     const getHBO = await data.filter((elem: any) => elem.platform === 'HBO Max')
     const getCrunchy = await data.filter((elem: any) => elem.platform === 'Crunchyroll')
     const getNetflix= await data.filter((elem: any) => elem.platform === 'Netflix')
+    const lastestMovies = await data.filter((elem: any) => Number(elem.year) >= 2023)
     setMovies(data)
     setDisney(getDisney)
     setHBO(getHBO)
     setNetflix(getNetflix)
     setCrunchy(getCrunchy)
+    setNewMovies(lastestMovies)
   }
 
   useEffect(() => {
@@ -41,7 +45,7 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
   }, [])
 
   return (
-    <MovieContext.Provider value={{ movies, setMovies, hbo, crunchy, netflix, disney }}>
+    <MovieContext.Provider value={{ movies, setMovies, newMovies, hbo, crunchy, netflix, disney }}>
       {children}
     </MovieContext.Provider>
   );
