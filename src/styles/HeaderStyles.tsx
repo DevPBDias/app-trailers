@@ -114,7 +114,7 @@ export const GoBack = styled.button`
     }
 `;
 
-export const IconContainer = styled.div`
+export const IconContainer = styled.button`
     width: 100%;
     display: flex;
     flex-flow: row nowrap;

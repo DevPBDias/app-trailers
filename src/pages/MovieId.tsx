@@ -23,7 +23,7 @@ function MovieId() {
 
   return (
     <MovieIdContainer>
-      <HeaderMovie />
+      <HeaderMovie movieId={id} />
       <MovieIdCard data={movie} />
       <BtnContainer>
         <Link to={`${movie.linkTrailer}`}>

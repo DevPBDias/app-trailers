@@ -25,12 +25,12 @@ function App() {
       <Route path="/addMovie" element={ <AddMovie /> } />
       <Route path="/edit/:id" element={ <EditProfile /> } />
       <Route path="/movie/:id" element={ <MovieId /> } />
-
       <Route path="/movies" element={ <Movies /> } />
       <Route path="/series" element={ <Series /> } />
       <Route path="/animes" element={ <Animes /> } />
-      <Route path="/favorites" element={ <Favorites /> } />
       <Route path="/search" element={ <Search /> } />
+
+      <Route path="/favorites" element={ <Favorites /> } />
     </Routes>
 
   );

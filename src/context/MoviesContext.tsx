@@ -12,6 +12,9 @@ interface IMovieContextType {
   moviesType: any,
   animesType: any,
   seriesType: any,
+  favorites: any,
+  setFavorites: Dispatch<SetStateAction<any>>,
+  updatingFavorites: (movie: any) => void
 }
 
 interface MoviesProviderProps {
@@ -30,6 +33,7 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
   const [moviesType, setMovieType] = useState<any>([])
   const [animesType, setAnimeType] = useState<any>([])
   const [seriesType, setSerieType] = useState<any>([])
+  const [favorites, setFavorites] = useState<any>([])
 
   async function savingData() {
     const { data } = await getMoviesData();
@@ -52,15 +56,30 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
     setSerieType(seriesData)
   }
 
+  const updatingFavorites = (movie: any) => {
+    let updatedFavorites = [...favorites];
+    const searchFav = updatedFavorites.some((elem: any) => elem._id === movie._id)
+    
+    if (searchFav) {
+      const newFav = updatedFavorites.filter((elem: any) => elem._id == !movie._id)
+      updatedFavorites = newFav
+    } else {
+      updatedFavorites.push(movie);
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    setFavorites(updatedFavorites);
+  };
+
   useEffect(() => {
     savingData();
   }, [])
 
   return (
     <MovieContext.Provider value={{
-      movies, setMovies, moviesType, 
-      animesType, seriesType, newMovies, hbo,
-      crunchy, netflix, disney,
+      movies, setMovies, moviesType,
+      animesType, seriesType, newMovies, hbo, updatingFavorites,
+      crunchy, netflix, disney, favorites, setFavorites
     }}>
       {children}
     </MovieContext.Provider>

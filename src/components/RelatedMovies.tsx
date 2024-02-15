@@ -14,7 +14,6 @@ function RelatedMovies({ data }: RelatedProps) {
   const [relatedMovies, setRelatedMovies] = useState<any>([])
   const { movies } = useContext(MovieContext)
 
-
   const settings = {
     className: "center",
     infinite: true,
@@ -28,8 +27,6 @@ function RelatedMovies({ data }: RelatedProps) {
     }
   };
 
-
-
   async function getRelatedMovies() {
     const moviesInCategory = await movies.filter((elem: any) => elem.type === data)
     setRelatedMovies(moviesInCategory);
@@ -37,7 +34,7 @@ function RelatedMovies({ data }: RelatedProps) {
 
   useEffect(() => {
     getRelatedMovies()
-  }, [relatedMovies])
+  }, [movies])
 
   return (
     <>

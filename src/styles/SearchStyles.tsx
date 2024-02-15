@@ -14,14 +14,26 @@ export const SearchContainer = styled.section`
     div {
         display: flex;
         flex-flow: row wrap;
-        justify-content: space-around;
+        justify-content: space-between;
         justify-items: center;
         align-items: center;
         width: 80%;
+        
+        p {
+            color: #f4b860;
+            font-size: 1.2rem;
+            margin: auto;
+            margin-top: 2rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
 
         .movieImg {
-            width: 9.0625rem;
-            height: 9.0625rem;
+            width: 42%;
+            height: 9rem;
+            margin: .3rem;
+            border-radius: 8px;
         }
     }
 `;

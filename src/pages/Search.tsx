@@ -1,37 +1,45 @@
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import HeaderTitle from '../components/HeaderTitle';
 import { SearchContainer, SearchInput } from '../styles/SearchStyles';
 import Footer from '../components/Footer';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { MovieContext } from '../context/MoviesContext';
 
-const searchSchema = z.object({
-  name: z.string().min(3, 'Nome curto'),
-});
-
-type SearchData = z.infer<typeof searchSchema>;
-
 function Search() {
-  const { register } = useForm<SearchData>({
-    resolver: zodResolver(searchSchema),
-  });
-
   const { movies } = useContext(MovieContext)
+  const [searchValue, setSearchValue] = useState<any>('')
+  const [searchedMovies, setSearchedMovies] = useState<any>([])
+
+
+  const findingMovies = () => {
+    const foundMovies = movies.filter((movie: any) => movie.name.toLowerCase().includes(searchValue))
+    if (foundMovies) {
+      setSearchedMovies(foundMovies)
+    }
+  }
+
+  const handleChange = ({ target }: any) => {
+    setSearchValue(target.value)
+    findingMovies();
+  }
 
   return (
     <SearchContainer>
       <HeaderTitle titlePage="Pesquisa" />
-      <SearchInput placeholder="Digite o nome..." type="text" { ...register('name') } />
+      <SearchInput
+        placeholder="Digite o nome..."
+        value={searchValue}
+        type="text"
+        onChange={handleChange}
+      />
       <div>
         {
-            movies && movies.map((elem: any, index: number) => (
+          searchedMovies.length === 0 ? <p>Nenhum filme encontrado!!</p>
+            : searchedMovies.map((elem: any, index: number) => (
               <img
                 className="movieImg"
-                key={ index }
-                src={ elem.image }
-                alt={ `${elem.name} img` }
+                key={index}
+                src={elem.image}
+                alt={`${elem.name} img`}
               />
             ))
         }
