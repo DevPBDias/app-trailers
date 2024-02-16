@@ -7,19 +7,17 @@ import {
 import { useContext } from 'react';
 import { MovieContext } from '../context/MoviesContext';
 
-function HeaderMovie({ movieId }: any) {
-  const { movies, updatingFavorites } = useContext(MovieContext)
+function HeaderMovie({ data }: any) {
+  const { updatingFavorites } = useContext(MovieContext)
   const navigate = useNavigate();
-
-  const filteredMovie = movies.filter((elem: any) => elem._id === movieId)
-
+  
   const favoriteList = JSON.parse(localStorage.getItem("favorites") || '""') || [];
-
+  const conditionFavorites = favoriteList?.some((elem: any) => elem._id === data._id) ? "❤️" : "💙";
+  
   const handleClick = () => {
-    updatingFavorites(filteredMovie[0]);
+    updatingFavorites(data);
   };
 
-  const conditionFavorites = favoriteList?.some((elem: any) => elem._id === movieId) ? "❤️" : "💙";
 
   return (
     <HeaderMovieContainer>

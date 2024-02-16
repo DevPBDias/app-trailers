@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useMemo, useState } from "react";
 import { getMoviesData } from "../services/movieService";
 
 interface IMovieContextType {
@@ -14,14 +14,15 @@ interface IMovieContextType {
   seriesType: any,
   favorites: any,
   setFavorites: Dispatch<SetStateAction<any>>,
-  updatingFavorites: (movie: any) => void
+  updatingFavorites: (movie: any) => void,
+  updatingRelatedMovies: (movie: any) => any
 }
 
 interface MoviesProviderProps {
   children: ReactNode,
 }
 
-export const MovieContext = createContext({} as IMovieContextType);
+export const MovieContext = createContext({} as any);
 
 export default function MoviesProvider({ children }: MoviesProviderProps) {
   const [movies, setMovies] = useState<any>([]);
@@ -59,28 +60,60 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
   const updatingFavorites = (movie: any) => {
     let updatedFavorites = [...favorites];
     const searchFav = updatedFavorites.some((elem: any) => elem._id === movie._id)
-    
-    if (searchFav) {
-      const newFav = updatedFavorites.filter((elem: any) => elem._id == !movie._id)
-      updatedFavorites = newFav
-    } else {
+
+    if (!searchFav) {
       updatedFavorites.push(movie);
+    } else {
+      const filteredData = updatedFavorites.filter((elem: any) => elem._id !== movie._id)
+      updatedFavorites = filteredData
     }
 
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setFavorites(updatedFavorites);
   };
 
+  const updatingRelatedMovies = (id: any) => {
+    const moviesInCategory = movies.filter((elem: any) => elem.type === id)
+    return moviesInCategory
+  };
+
   useEffect(() => {
     savingData();
   }, [])
 
+  const contextValue = {
+    movies,
+    setMovies,
+    moviesType,
+    animesType,
+    seriesType,
+    newMovies,
+    hbo,
+    updatingFavorites,
+    crunchy,
+    netflix,
+    disney,
+    favorites,
+    setFavorites,
+    updatingRelatedMovies
+  };
+
+  const contextMemo = useMemo(() => (contextValue), [
+    movies,
+    moviesType,
+    animesType,
+    seriesType,
+    newMovies,
+    hbo,
+    crunchy,
+    netflix,
+    disney,
+    favorites,
+  ]);
+
+
   return (
-    <MovieContext.Provider value={{
-      movies, setMovies, moviesType,
-      animesType, seriesType, newMovies, hbo, updatingFavorites,
-      crunchy, netflix, disney, favorites, setFavorites
-    }}>
+    <MovieContext.Provider value={contextMemo}>
       {children}
     </MovieContext.Provider>
   );

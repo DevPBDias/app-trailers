@@ -24,13 +24,13 @@ function App() {
       <Route path="/profile/:id" element={ <Profile /> } />
       <Route path="/addMovie" element={ <AddMovie /> } />
       <Route path="/edit/:id" element={ <EditProfile /> } />
-      <Route path="/movie/:id" element={ <MovieId /> } />
       <Route path="/movies" element={ <Movies /> } />
       <Route path="/series" element={ <Series /> } />
       <Route path="/animes" element={ <Animes /> } />
       <Route path="/search" element={ <Search /> } />
-
       <Route path="/favorites" element={ <Favorites /> } />
+
+      <Route path="/movie/:id" element={ <MovieId /> } />
     </Routes>
 
   );

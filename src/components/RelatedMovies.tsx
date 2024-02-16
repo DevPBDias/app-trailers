@@ -1,19 +1,10 @@
 import { Link } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react';
 import { PlatContainer, TiltePlatform, ImageMovie } from '../styles/PlatformCardMoviesStyles'
-import { MovieContext } from '../context/MoviesContext';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 
-type RelatedProps = {
-  data: any,
-}
-
-function RelatedMovies({ data }: RelatedProps) {
-  const [relatedMovies, setRelatedMovies] = useState<any>([])
-  const { movies } = useContext(MovieContext)
-
+function RelatedMovies({ relatedData }: any) {
   const settings = {
     className: "center",
     infinite: true,
@@ -27,25 +18,17 @@ function RelatedMovies({ data }: RelatedProps) {
     }
   };
 
-  async function getRelatedMovies() {
-    const moviesInCategory = await movies.filter((elem: any) => elem.type === data)
-    setRelatedMovies(moviesInCategory);
-  }
-
-  useEffect(() => {
-    getRelatedMovies()
-  }, [movies])
 
   return (
     <>
       {
-        relatedMovies  && (
+        relatedData  && (
           <PlatContainer>
             <TiltePlatform>Relacionados</TiltePlatform>
             <div className='div-plat'>
               <Slider {...settings}>
                 {
-                  relatedMovies?.map((elem: any, index: number) => (
+                  relatedData?.map((elem: any, index: number) => (
                       <Link key={index} className='link' to={`/movie/${elem._id}`}>
                         <ImageMovie src={elem.image} alt={`movie img ${index}`} />
                       </Link>
