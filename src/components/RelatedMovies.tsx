@@ -33,7 +33,7 @@ function RelatedMovies({ type }: any) {
             <div className='div-plat'>
               <Slider {...settings}>
                 {
-                  data && data.map((elem: any, index: number) => (
+                  RelatedData && RelatedData.map((elem: any, index: number) => (
                     <Link key={index} className='link' to={`/movie/${elem._id}`}>
                       <ImageMovie src={elem.image} alt={`movie img ${index}`} />
                     </Link>
