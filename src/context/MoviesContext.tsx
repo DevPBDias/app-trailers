@@ -15,14 +15,13 @@ interface IMovieContextType {
   favorites: any,
   setFavorites: Dispatch<SetStateAction<any>>,
   updatingFavorites: (movie: any) => void,
-  updatingRelatedMovies: (movie: any) => any
 }
 
 interface MoviesProviderProps {
   children: ReactNode,
 }
 
-export const MovieContext = createContext({} as any);
+export const MovieContext = createContext({} as IMovieContextType);
 
 export default function MoviesProvider({ children }: MoviesProviderProps) {
   const [movies, setMovies] = useState<any>([]);
@@ -72,11 +71,6 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
     setFavorites(updatedFavorites);
   };
 
-  const updatingRelatedMovies = (id: any) => {
-    const moviesInCategory = movies.filter((elem: any) => elem.type === id)
-    return moviesInCategory
-  };
-
   useEffect(() => {
     savingData();
   }, [])
@@ -95,7 +89,6 @@ export default function MoviesProvider({ children }: MoviesProviderProps) {
     disney,
     favorites,
     setFavorites,
-    updatingRelatedMovies
   };
 
   const contextMemo = useMemo(() => (contextValue), [
