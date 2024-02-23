@@ -28,7 +28,7 @@ function CategoryCard({ data, name }: ICardProps) {
   };
 
   const selectType = async () => {
-    const okdata = await data.filter((item: any) => item.category === name)
+    const okdata = data.filter((item: any) => item.category === name)
     setOk(okdata)
   }
 

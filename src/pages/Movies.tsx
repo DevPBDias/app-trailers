@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import Footer from '../components/Footer';
 import HeaderTitle from '../components/HeaderTitle';
 import LatestCard from '../components/LatestCard';
-import { useContext, useEffect, useState } from 'react';
-import { MovieContext } from '../context/MoviesContext';
+import { useContext } from 'react';
 import CategoryCard from '../components/CategoryCard';
+import { MovieContext } from '../context/MoviesContext';
 
 const MovieContainer = styled.footer`
     display: flex;
@@ -17,27 +17,22 @@ const MovieContainer = styled.footer`
 `;
 
 function Movies() {
-  const { moviesType } = useContext(MovieContext);
-  const [categoriesAll, setCategoriesAll] = useState<any>([])
+  const { movies } = useContext(MovieContext)
 
-  const removingSameCategory = async() => {
-    const categories = await moviesType.map((elem: any) => elem.category)
-    const set = new Set(categories);
-    const arraySemDuplicados = Array.from(set);
-    setCategoriesAll(arraySemDuplicados)
-  }
-
-  useEffect(() => {
-    removingSameCategory()
-  }, [])
+  const filteredData = movies?.filter((elem: any) => elem.type === 'Filme')
+  const categories = filteredData?.map((elem: any) => elem.category)
+  const set = new Set(categories);
+  const categoriesAll = Array.from(set);
 
   return (
     <MovieContainer>
       <HeaderTitle titlePage="Filmes" />
-      <LatestCard data={moviesType} />
+      {
+        filteredData && <LatestCard data={filteredData} />
+      }
       {
         categoriesAll && categoriesAll.map((elem: any, index: number) => (
-          <CategoryCard key={index} data={moviesType} name={elem} />
+          <CategoryCard key={index} data={filteredData} name={elem} />
         ))
       }
       <Footer />
