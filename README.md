@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# Projeto App Trailers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**- Projeto Pessoal**
 
-Currently, two official plugins are available:
+Aplicação oriunda de um dos projeto do curso de Ux design em que fiz o mockup do Figma e criei suas funcionalidades de acordo com o design do produto.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Link para o estudo de caso do [projeto App Trailer](https://ux-portfolio-pbdias.vercel.app/project/3)
 
-## Expanding the ESLint configuration
+<details><summary>Stack utilizada</summary>
+<ul>
+  <li>Framework: React Hooks</li>
+  <li>Linguagem: Javascript, Typescript</li>
+  <li>Estilização: Styled-components</li>
+  <li>Formulários: React-hook-form, Zod</li>
+  <li>Bibliotecas: Swiper, React-slick</li>
+  <li>Data: Axios, Typescript-cookie</li>
+</ul>
+</details>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<details><summary>Funcionalidades</summary>
+<ul>
+   <li>Cadastro do usuário</li>
+   <li>Redefinir senha</li>
+   <li>Ver informações do filme escolhido</li>
+   <li>Navegar entre tipos de conteúdo</li>
+   <li>Deletar conta</li>
+   <li>Adicionar novo filme para banco de dados</li>
+   <li>Alterar dados de usuário</li>
+   <li>Favoritar filme</li>
+   <li>Pesquisar por nome do filme</li>
+</ul>
+</details>
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<details><summary>Aprendizados</summary>
+ <ul>
+  <li>Mockup de figma</li>
+   <li>Conexão entre back-end e front-end</li>
+  <li>Usar Mongodb Atlas como banco de dados</li>
+  <li>Criar carousel com bibliotecas diferentes</li>
+  <li>Criar seleção de favoritos</li>
+  <li>Criar filtro de pesquisa</li>
+</ul>
+</details>
